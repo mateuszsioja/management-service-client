@@ -1,0 +1,81 @@
+<div class="container" *ngIf="user">
+
+  <form [formGroup]="userForm">
+
+    <div style="margin-left: 10px;">
+
+      <div style="padding: 5px 0px 10px 20px" class="col-6 bg-faded">
+
+        <h2>Register</h2>
+
+        <br/>
+
+        <div class="form-group row">
+          <label for="username" class="col-2 col-form-label">Username</label>
+          <div class="col-9">
+            <input [(ngModel)]="user.username" class="form-control" formControlName="username" id="username" type="text"
+                    style="float: left;">
+            <div *ngIf='formErrors.username' class="alert alert-warning">
+              {{formErrors.username}}
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label for="password" class="col-2 col-form-label">Password</label>
+          <div class="col-9">
+            <input [(ngModel)]="user.password" class="form-control" formControlName="password" id="password" type="password"
+                   required>
+            <div *ngIf='formErrors.password' class="alert alert-warning">
+              {{formErrors.password}}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="firstName" class="col-2 col-form-label">First Name</label>
+          <div class="col-9">
+            <input [(ngModel)]="user.firstName" class="form-control" formControlName="firstName" id="firstName" type="text"
+                   required>
+            <div *ngIf='formErrors.firstName' class="alert alert-warning">
+              {{formErrors.firstName}}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="lastName" class="col-2 col-form-label">Last Name</label>
+          <div class="col-9">
+            <input [(ngModel)]="user.lastName" class="form-control" formControlName="lastName" id="lastName"
+                   type="text"
+                   required>
+            <div *ngIf='formErrors.lastName' class="alert alert-warning">
+              {{formErrors.lastName}}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="email" class="col-2 col-form-label">Email</label>
+          <div class="col-9">
+            <input [(ngModel)]="user.email" class="form-control" formControlName="email" id="email"
+                   type="text"
+                   required>
+            <div *ngIf='formErrors.email' class="alert alert-warning">
+              {{formErrors.email}}
+            </div>
+          </div>
+        </div>
+
+        <button role="button" class="btn btn-success" [disabled]="!userForm.valid"
+                (click)="add(user)">Save
+        </button>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
