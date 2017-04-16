@@ -2,6 +2,14 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
+## Comands
+
+1. npm install -g angular-cli
+2. npm install --save bootstrap@4.0.0-alpha.6
+3. npm install --save @ng-bootstrap/ng-bootstrap
+4. npm install angular2-jwt
+5. ng serve
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
