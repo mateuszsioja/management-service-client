@@ -1,0 +1,25 @@
+<h2>Tasks</h2>
+<section class="task-container">
+  <article class="task" [ngClass] = "{'assigned-task': task.userId}" *ngFor="let task of tasks">
+    <div class="hovered-task">
+      <img  class="assign-icon"
+            src="../../assets/assign-icon.svg"
+            (click)="openAssignmentModal(task)"/>
+      <img
+        onmouseover="this.src='../../assets/delete-icon-hover.svg';"
+        onmouseleave="this.src='../../assets/delete-icon.svg';"
+        class="delete-icon"
+        [style.display] = "displayIconDependingOnTheRole()"
+        (click)="deleteTask(task.id)"
+        src="../../assets/delete-icon.svg"/>
+    </div>
+    <div class="task-info">
+      <p class="id">Task <strong>#{{task.id}}</strong></p>
+      <p><strong>Type:</strong> {{task.type}}</p>
+      <p><strong>Summary:</strong> {{task.summary}}</p>
+      <p><strong>Priority:</strong> {{task.priority}}</p>
+      <p><strong>Status:</strong> {{task.status}}</p>
+      <p><strong>Assigned to:</strong> {{task.userId}}</p>
+    </div>
+  </article>
+</section>

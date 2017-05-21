@@ -68,3 +68,11 @@ h1 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+
+
+.container {
+  margin-top: 57px;
+  text-align: center;
+  outline: 2px solid lightgrey;
+  height: auto;
+}

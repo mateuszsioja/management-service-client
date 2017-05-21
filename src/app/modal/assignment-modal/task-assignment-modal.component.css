@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Khula');
+
+.fade.in {
+  opacity: 1;
+}
+
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.modal-backdrop.in {
+  opacity: 0.5;
+}
+
+.modal-body p {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.modal-body select {
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.modal-body .assign-to-me {
+  background-color: transparent;
+  border: none;
+  margin-left: -102px;
+  margin-top: 70px;
+  font-size: small;
+  font-family: 'Khula', sans-serif;
+  font-weight: bold;
+}
+
+.modal-body .assign-to-me:active, .modal-body .assign-to-me:focus, .modal-body .assign-to-me:hover {
+  border: none;
+  outline: none;
+  color: #4256d7;
+}
+
+.btn, .btn-secondary {
+  margin-left: 10%;
+}

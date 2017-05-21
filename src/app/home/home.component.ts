@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
-import {JwtHelper} from 'angular2-jwt';
 import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
+import {AlertService} from "../_services/alert-service";
 
 @Component({
   moduleId: module.id,
@@ -13,7 +13,8 @@ import {Router} from "@angular/router";
 export class HomeComponent {
 
   constructor(private authService: AuthenticationService,
-              private router: Router) {}
+              private router: Router,
+              private alertService: AlertService) {}
 
   //jwtHelper: JwtHelper = new JwtHelper();
 
@@ -24,5 +25,9 @@ export class HomeComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  addToast() {
+    this.alertService.alertFailure('xd')
   }
 }

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: Http) { }
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private authUrl = 'http://localhost:8080/api/auth';
+  constructor(private http: Http) { }
 
   login(username: string, password: string): Observable<void> {
     return this.http.post(this.authUrl,

@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
   moduleId: module.id,
-  selector: 'task',
+  selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })
