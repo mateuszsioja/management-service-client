@@ -1,11 +1,12 @@
 .form-signin {
-  max-width: 330px;
-  padding: 55px;
-  margin: 0 auto;
+  max-width: 420px;
+  padding: 30px 55px 30px 55px;
+  margin: 50px auto;
+  outline: 2px solid lightgrey;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .form-signin .checkbox {
   font-weight: normal;
@@ -27,7 +28,11 @@
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.alert-signin {
+  margin-top: 4px;
 }

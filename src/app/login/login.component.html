@@ -8,7 +8,22 @@
     <label class="sr-only">Password</label>
     <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="model.password" required>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+
+    <!--<button role="button" class="btn btn-danger" (click)="goBack()">Go back</button>-->
+
+    <div *ngIf="error" class="alert alert-danger alert-signin ">{{error}}</div>
+
+    <button role="button" class="btn btn-success" [disabled]="!emptyLoginForm()"
+            (click)="login(user)">Sign in!
+    </button>
+
+    <button role="button" class="btn btn-danger"
+            (click)="goBack()">Go back
+    </button>
+
+
+
   </form>
 
 </div> <!-- /container -->

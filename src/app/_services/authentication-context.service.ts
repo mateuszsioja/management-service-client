@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
-import { JwtHelper } from 'angular2-jwt';
-import {Role} from "../_models/role";
+import {JwtHelper} from "angular2-jwt";
 
 @Injectable()
 export class AuthenticationContextService {
@@ -14,8 +13,10 @@ export class AuthenticationContextService {
   }
 
   getUsernameOfCurrentlyLoggedUser() {
-    const decodedToken = this.jwtHelper.decodeToken(this.currentlyLoggedUserToken);
-    return decodedToken.username;
+    if (this.currentlyLoggedUserToken != null) {
+      const decodedToken = this.jwtHelper.decodeToken(this.currentlyLoggedUserToken);
+      return decodedToken.username;
+    } else return '';
   }
 
   hasAdminRole() {
@@ -26,12 +27,16 @@ export class AuthenticationContextService {
     return this.hasRole("ROLE_USER");
   }
 
+  hasAdminOrUserRole() {
+    return this.hasAdminRole() || this.hasUserRole();
+  }
+
   isAnonymous() {
-   return this.getUserRoles().length > 0;
+    return this.getUserRoles().length > 0;
   }
 
   private hasRole(role: string) {
-    for(let entry of this.getUserRoles()) {
+    for (let entry of this.getUserRoles()) {
       if (entry.authority == role) {
         return true;
       }
@@ -40,7 +45,9 @@ export class AuthenticationContextService {
   }
 
   private getUserRoles() {
-    const decodedToken = this.jwtHelper.decodeToken(this.currentlyLoggedUserToken);
-    return decodedToken.roles;
+    if (this.currentlyLoggedUserToken != null) {
+      const decodedToken = this.jwtHelper.decodeToken(this.currentlyLoggedUserToken);
+      return decodedToken.roles;
+    } else return '';
   }
 }

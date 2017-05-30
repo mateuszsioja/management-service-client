@@ -4,6 +4,7 @@ import {User} from "../_models/user";
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {Router} from "@angular/router";
 import {EmailValidator} from "../_validators/email.validator";
+import {Location} from "@angular/common";
 
 @Component({
   moduleId: module.id,
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private location: Location) {
   }
 
   ngOnInit(): void {
@@ -148,5 +150,9 @@ export class RegisterComponent implements OnInit {
     if (this.userForm.status == 'VALID')
       this.userService.register(user)
         .subscribe(() => this.router.navigate(['/']));
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

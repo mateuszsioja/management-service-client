@@ -1,1 +1,27 @@
-Do zrobienia huehue
+<h2>USERS</h2>
+
+<table class="table">
+  <thead class="thead-default">
+  <tr>
+    <th><input type="number" name="id" [(ngModel)]="filter.id" min="1" placeholder="#" class="form-control"/></th>
+    <th><input type="text" name="firstName" [(ngModel)]="filter.firstName" placeholder="First Name"
+               class="form-control"/></th>
+    <th><input type="text" name="lastName" [(ngModel)]="filter.lastName" placeholder="Last Name" class="form-control"/>
+    </th>
+    <th><input type="text" name="username" [(ngModel)]="filter.username" placeholder="Username" class="form-control"/>
+    </th>
+    <th><input type="text" name="email" [(ngModel)]="filter.email" placeholder="Email" class="form-control"/></th>
+    <th><input type="text" name="role" [(ngModel)]="filter.role" placeholder="Role" class="form-control"/></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users | usersfilter:filter">
+    <th scope="row">{{user.id}}</th>
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.role}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,5 +1,5 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgModule} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
@@ -22,6 +22,7 @@ import {ToastyModule} from "ng2-toasty";
 import {AlertService} from "./_services/alert-service";
 import {UsersComponent} from "./users/users.component";
 import {AuthModule} from "./auth.module";
+import {UsersFilterPipe} from "./users/users-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {AuthModule} from "./auth.module";
     RegisterComponent,
     TasksComponent,
     TaskAssignmentModal,
-    UsersComponent
+    UsersComponent,
+    UsersFilterPipe
   ],
   imports: [
     BrowserModule,

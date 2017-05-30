@@ -24,7 +24,6 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.authenticationContext.hasAdminRole();
-    console.log(this.authenticationContext.hasAdminRole());
   }
 
   getTasks() {
@@ -67,6 +66,7 @@ export class TasksComponent implements OnInit {
   openAssignmentModal(task: Task): void {
     const modalRef = this.modalService.open(TaskAssignmentModal);
     modalRef.componentInstance.task = task;
+    modalRef.result.then(() => this.getTasks());
   }
 }
 

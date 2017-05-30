@@ -1,25 +1,31 @@
-import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-
-import { tokenNotExpired } from 'angular2-jwt';
+import {Injectable} from "@angular/core";
+import {Http, Headers, Response} from "@angular/http";
+import {Observable} from "rxjs/Observable";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/toPromise";
+import {tokenNotExpired} from "angular2-jwt";
 
 @Injectable()
 export class AuthenticationService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private authUrl = 'http://localhost:8080/api/auth';
-  constructor(private http: Http) { }
 
-  login(username: string, password: string): Observable<void> {
+  constructor(private http: Http) {
+  }
+
+  login(username: string, password: string): Observable<boolean> {
+    this.logout();
     return this.http.post(this.authUrl,
-      JSON.stringify({ username: username, password: password }),
+      JSON.stringify({username: username, password: password}),
       {headers: this.headers})
       .map((response: Response) => {
         let token = response.json().token;
         if (token) {
           localStorage.setItem('token', token);
+          return true;
+        } else {
+          return false;
         }
       });
   }

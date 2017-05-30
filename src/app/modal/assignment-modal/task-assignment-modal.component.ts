@@ -45,7 +45,7 @@ export class TaskAssignmentModal implements OnInit {
     this.taskService.assignTaskToUser(this.task.id, patchDto)
       .subscribe(() => {
         this.alertService.alertSuccess('Task was successfully assigned')
-        window.location.reload();
+        //window.location.reload();
       });
     this.activeModal.close();
   }
