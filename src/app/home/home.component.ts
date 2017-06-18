@@ -32,7 +32,7 @@ export class HomeComponent {
   }
 
   addToast() {
-    this.alertService.alertFailure('xd')
+    this.alertService.alertFailure('xd');
   }
 
   displayIfHasAdminRole(): boolean {

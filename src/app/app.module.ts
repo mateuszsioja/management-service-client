@@ -9,7 +9,6 @@ import {AppRoutingModule} from "./app.routing.module";
 import {AuthenticationService} from "./_services/authentication.service";
 import {AuthGuard} from "./_guards/auth.guard";
 import {HomeComponent} from "./home/home.component";
-import {TaskComponent} from "./task/task.component";
 import {LoginComponent} from "./login/login.component";
 import {UserService} from "./_services/user.service";
 import {RegisterComponent} from "./register/register.component";
@@ -23,16 +22,20 @@ import {AlertService} from "./_services/alert-service";
 import {UsersComponent} from "./users/users.component";
 import {AuthModule} from "./auth.module";
 import {UsersFilterPipe} from "./users/users-filter.pipe";
+import {AdminGuard} from "./_guards/admin.guard";
+import {AddTaskModalComponent} from "./modal/add-task-modal/add-task-modal.component";
+import {HomeContentComponent} from "./home/content/home-content.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TaskComponent,
+    HomeContentComponent,
     LoginComponent,
     RegisterComponent,
     TasksComponent,
     TaskAssignmentModal,
+    AddTaskModalComponent,
     UsersComponent,
     UsersFilterPipe
   ],
@@ -50,13 +53,17 @@ import {UsersFilterPipe} from "./users/users-filter.pipe";
   ],
   providers: [
     AuthGuard,
+    AdminGuard,
     AuthenticationService,
     UserService,
     TaskService,
     AuthenticationContextService,
     AlertService,
   ],
-  entryComponents: [TaskAssignmentModal],
+  entryComponents: [
+    TaskAssignmentModal,
+    AddTaskModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

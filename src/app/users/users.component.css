@@ -10,3 +10,7 @@ h2 {
   font-family: 'Open Sans', sans-serif;
 }
 
+.change-role {
+  float: right;
+  cursor: pointer;
+}

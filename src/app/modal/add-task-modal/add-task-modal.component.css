@@ -1,0 +1,32 @@
+.has-error {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+.valid {
+  border: 2px solid green;
+  border-radius: 4px;
+}
+
+button {
+  cursor: pointer;
+  margin-left: 20px;
+}
+button[type="submit"] {
+  min-width:200px;
+}
+
+input, select {
+  width: 425px;
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+}
+.assign-to-me {
+  border: none;
+  outline: none;
+  color: #4256d7;
+  background-color: white;
+  min-width:200px;
+}
+label {
+  min-width:200px;
+}

@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add new task</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form [formGroup]="taskForm" novalidate
+        (ngSubmit)="addTask()">
+    <div>
+      <label for="type" class="col-2 col-form-label">Type:
+        <input [ngClass]="[taskForm.controls['type'].valid ? 'valid' : 'has-error']" class="form-control"
+               formControlName="type" id="type">
+      </label>
+    </div>
+    <div>
+      <label for="summary" class="col-2 col-form-label">Summary:
+        <input [ngClass]="[taskForm.controls['summary'].valid ? 'valid' : 'has-error']" class="form-control"
+               formControlName="summary" id="summary">
+      </label>
+    </div>
+    <div>
+      <label class="col-2 col-form-label" for="priority">Priority:
+        <input [ngClass]="[taskForm.controls['priority'].valid ? 'valid' : 'has-error']" class="form-control"
+               formControlName="priority" id="priority">
+      </label>
+    </div>
+    <div>
+      <label class="col-2 col-form-label" for="status">Status:
+        <input [ngClass]="[taskForm.controls['status'].valid ? 'valid' : 'has-error']" class="form-control"
+               formControlName="status" id="status">
+      </label>
+    </div>
+    <div>
+      <label class="col-2" for="user">Assigned User:
+        <select class="form-control" type="string" formControlName="user" id="user" [(ngModel)]="selectedUser">
+          <option *ngFor="let user of users" [ngValue]="user">{{user.fullName}}</option>
+        </select>
+        <div class="row">
+          <button type="button" class="assign-to-me" (click)="assignMyself()">Assign to me</button>
+        </div>
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!taskForm.valid">Add</button>
+  </form>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>

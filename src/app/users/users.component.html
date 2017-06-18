@@ -21,7 +21,14 @@
     <td>{{user.lastName}}</td>
     <td>{{user.username}}</td>
     <td>{{user.email}}</td>
-    <td>{{user.role}}</td>
+    <td>{{user.role}}
+      <div class="change-role" *ngIf="user.username !== loggedInUsername()">
+        <img class="add-icon"
+             src="../../assets/change-icon.svg"
+             (click)="changeRole(user)"
+        />
+      </div>
+    </td>
   </tr>
   </tbody>
 </table>

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Headers, Response} from "@angular/http";
+import {Headers, Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
@@ -20,7 +20,7 @@ export class AuthenticationService {
       JSON.stringify({username: username, password: password}),
       {headers: this.headers})
       .map((response: Response) => {
-        let token = response.json().token;
+        const token = response.json().token;
         if (token) {
           localStorage.setItem('token', token);
           return true;
@@ -39,5 +39,20 @@ export class AuthenticationService {
       return tokenNotExpired();
     }
     return false;
+  }
+
+  refreshToken(): Observable<boolean> {
+    const url = this.authUrl + '/refresh';
+    return this.http.post(url, JSON.stringify(localStorage.getItem('token')),
+      {headers: this.headers})
+      .map((response: Response) => {
+        const token = response.json().token;
+        if (token) {
+          localStorage.setItem('token', token);
+          return true;
+        } else {
+          return false;
+        }
+      });
   }
 }

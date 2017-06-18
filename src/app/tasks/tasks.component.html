@@ -1,15 +1,27 @@
 <h2>Tasks</h2>
+
+
+<div class="add-task" (click)="addTaskOpenModal()" *ngIf="hasAnyRole()">
+  <p><strong>Add new task&nbsp;</strong> </p>
+  <img class="add-icon"
+       src="../../assets/add-icon.svg"
+       [style.display]="displayIconForAuthenticated()"
+       />
+</div>
+
 <section class="task-container">
-  <article class="task" [ngClass] = "{'assigned-task': task.userId}" *ngFor="let task of tasks">
+
+  <article class="task" [ngClass]="{'assigned-task': task.userId}" *ngFor="let task of tasks">
     <div class="hovered-task">
-      <img  class="assign-icon"
-            src="../../assets/assign-icon.svg"
-            (click)="openAssignmentModal(task)"/>
+      <img class="assign-icon"
+           src="../../assets/assign-icon.svg"
+           [style.display]="displayIconForAuthenticated()"
+           (click)="openAssignmentModal(task)"/>
       <img
         onmouseover="this.src='../../assets/delete-icon-hover.svg';"
         onmouseleave="this.src='../../assets/delete-icon.svg';"
         class="delete-icon"
-        [style.display] = "displayIconDependingOnTheRole()"
+        [style.display]="displayIconDependingOnTheRole()"
         (click)="deleteTask(task.id)"
         src="../../assets/delete-icon.svg"/>
     </div>
@@ -22,4 +34,9 @@
       <p><strong>Assigned to:</strong> {{task.userId}} </p>
     </div>
   </article>
+
 </section>
+
+
+
+

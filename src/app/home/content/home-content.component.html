@@ -1,0 +1,24 @@
+<div *ngIf="!loggedIn()">
+  <br/>
+  <h1>Welcome to our site!</h1>
+  <br/>
+  <h3>Join us and start managing our tasks or just browse them as anonymous user.</h3>
+  <br/>
+</div>
+
+<div *ngIf="hasAdminRole()">
+  <br/>
+  <h1>Welcome {{loggedInUsername()}} to our site!</h1>
+  <br/>
+  <h3>You can manage our tasks.</h3>
+  <h3>As admin, you can also browse all registered users add give them admin privileges.</h3>
+  <br />
+</div>
+
+<div *ngIf="hasUserRole()">
+  <br/>
+  <h1>Welcome {{loggedInUsername()}} to our site!</h1>
+  <br/>
+  <h3>You can manage our tasks.</h3>
+  <br />
+</div>

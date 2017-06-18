@@ -5,6 +5,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Component, OnInit} from "@angular/core";
 import {TaskAssignmentModal} from "../modal/assignment-modal/task-assignment-modal.component";
 import {AlertService} from "../_services/alert-service";
+import {AddTaskModalComponent} from "../modal/add-task-modal/add-task-modal.component";
 
 @Component({
   selector: 'app-tasks',
@@ -33,11 +34,11 @@ export class TasksComponent implements OnInit {
           this.tasks = tasks;
           this.tasks.sort((a, b) => {
             return a.id < b.id ? -1 : 1;
-          })
+          });
         },
         err => {
           console.log(err);
-          this.alertService.alertFailure('Could not get task list')
+          this.alertService.alertFailure('Could not get task list');
         });
   }
 
@@ -47,11 +48,11 @@ export class TasksComponent implements OnInit {
       .subscribe(
         result => {
           this.getTasks();
-          this.alertService.alertSuccess('Task was successfully deleted')
+          this.alertService.alertSuccess('Task was successfully deleted');
         },
         error => {
           console.log(error);
-          this.alertService.alertFailure('Task could not be deleted')
+          this.alertService.alertFailure('Task could not be deleted');
         }
       );
   }
@@ -63,10 +64,30 @@ export class TasksComponent implements OnInit {
     return 'none';
   }
 
+  displayIconForAuthenticated(): string {
+    if (this.authenticationContext.hasAdminOrUserRole()) {
+      return 'inline';
+    }
+    return 'none';
+  }
+
+  hasAnyRole(): boolean {
+    return this.authenticationContext.hasAdminOrUserRole();
+  }
+
   openAssignmentModal(task: Task): void {
     const modalRef = this.modalService.open(TaskAssignmentModal);
     modalRef.componentInstance.task = task;
-    modalRef.result.then(() => this.getTasks());
+    modalRef.result.then(() => {
+      setTimeout(() => this.getTasks(), 200);
+    });
+  }
+
+  addTaskOpenModal(): void {
+    const modalRef = this.modalService.open(AddTaskModalComponent);
+    modalRef.result.then(() => {
+      setTimeout(() => this.getTasks(), 200);
+    });
   }
 }
 

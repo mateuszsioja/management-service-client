@@ -39,13 +39,12 @@ export class TaskAssignmentModal implements OnInit {
   }
 
   assignUserToTask() {
-    let patchDto = new PatchDto();
+    const patchDto = new PatchDto();
     patchDto.targetField = 'id';
     patchDto.value = this.selectedUser.id.toString();
     this.taskService.assignTaskToUser(this.task.id, patchDto)
       .subscribe(() => {
-        this.alertService.alertSuccess('Task was successfully assigned')
-        //window.location.reload();
+        this.alertService.alertSuccess('Task was successfully assigned');
       });
     this.activeModal.close();
   }
